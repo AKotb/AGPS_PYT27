@@ -8,6 +8,10 @@ import TWStoTiff
 import TemporalMeanFrame
 import Tkinter as tk
 import ZonalStatistics
+import DataSubsetFrame
+import NDWIComputationFrame
+import MOSAICGenerationFrame
+import MOSAICClippingFrame
 
 
 class HomeWindow(tk.Frame):
@@ -44,6 +48,13 @@ class HomeWindow(tk.Frame):
         processingmenu.add_separator()
         processingmenu.add_command(label="Zonal Statistics", command=self.zonalstatistics)
         menubar.add_cascade(label="Processing", menu=processingmenu)
+        
+        lakesmenu = tk.Menu(menubar, tearoff=0)
+        lakesmenu.add_command(label="Subset Data", command=self.subset_data)
+        lakesmenu.add_command(label="Compute NDWI", command=self.compute_ndwi)
+        lakesmenu.add_command(label="Generate MOSAIC", command=self.generate_mosaic)
+        lakesmenu.add_command(label="Clip MOSAIC", command=self.clip_mosaic)
+        menubar.add_cascade(label="Lakes Processing", menu=lakesmenu)
 
         helpmenu = tk.Menu(menubar, tearoff=0)
         helpmenu.add_command(label="About", command=self.about)
@@ -96,11 +107,34 @@ class HomeWindow(tk.Frame):
         LSMProcessing.LSMProcessing(root)
         root.mainloop()
 
-
     def zonalstatistics(self):
         root = tk.Tk()
         root.geometry("600x250")
         ZonalStatistics.ZonalStatistics(root)
+        root.mainloop() 
+        
+    def subset_data(self):
+        root = tk.Tk()
+        root.geometry("600x300")
+        DataSubsetFrame.DataSubsetFrame(root)
+        root.mainloop()
+        
+    def compute_ndwi(self):
+        root = tk.Tk()
+        root.geometry("600x250")
+        NDWIComputationFrame.NDWIComputationFrame(root)
+        root.mainloop()
+        
+    def generate_mosaic(self):
+        root = tk.Tk()
+        root.geometry("600x250")
+        MOSAICGenerationFrame.MOSAICGenerationFrame(root)
+        root.mainloop()
+        
+    def clip_mosaic(self):
+        root = tk.Tk()
+        root.geometry("600x250")
+        MOSAICClippingFrame.MOSAICClippingFrame(root)
         root.mainloop()
 
 if __name__ == "__main__":

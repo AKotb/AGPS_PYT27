@@ -1,6 +1,10 @@
-import sys, getopt
-
-import arcpy
+try:
+    import sys, getopt
+    import archook
+    archook.get_arcpy()
+    import arcpy
+except ImportError:
+    print 'error'
 
 if __name__ == "__main__":
     input_raster_data = r'#'
