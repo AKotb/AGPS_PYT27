@@ -98,10 +98,11 @@ class DataSubsetFrame(tk.Frame):
         band_str = '*_b0' + str(band) + '*'
         #tiff_list = glob2.iglob(data_source + '/' + band_str + '.tif')
         tiff_list = []
-        print(os.listdir(data_source))
+        #print(os.listdir(data_source))
         for file in os.listdir(data_source):
-            if (file.endswith(".tif") and ("_b0"+ str(band)) in file):
-                    tiff_list.append(file)
+            if file.endswith(".tif") and ("_b0"+str(band)) in file:
+                tiff_list.append(file)
+                print (file)
         
         print(tiff_list)
         filter = open(filter_path).readlines()

@@ -1,5 +1,4 @@
 import tkMessageBox
-
 import LSMProcessing
 import MonthIndexFrame
 import NCtoTiff
@@ -20,19 +19,21 @@ class HomeWindow(tk.Frame):
         tk.Frame.__init__(self, master)
         self.master = master
         self.init_window()
-
+ 
     def init_window(self):
         self.master.title("AGPS Home")
         self.pack(fill=tk.BOTH, expand=1)
 
         menubar = tk.Menu(self.master)
         self.master.config(menu=menubar)
-
+        
+        # File Menu
         filemenu = tk.Menu(menubar, tearoff=0)
         filemenu.add_command(label="Open", command=self.open)
         filemenu.add_command(label="Exit", command=self.exit)
         menubar.add_cascade(label="File", menu=filemenu)
 
+        # Processing Menu
         processingmenu = tk.Menu(menubar, tearoff=0)
         processingmenu.add_command(label="Month Index", command=self.monthindex)
         processingmenu.add_command(label="Temporal Mean", command=self.temporalmean)
@@ -97,13 +98,13 @@ class HomeWindow(tk.Frame):
         
     def nctogeotiff(self):
         root = tk.Tk()
-        root.geometry("600x250")
+        root.geometry("600x300")
         NCtoTiff.NCtoTiff(root)
         root.mainloop()
         
     def processlsm(self):
         root = tk.Tk()
-        root.geometry("600x350")
+        root.geometry("650x350")
         LSMProcessing.LSMProcessing(root)
         root.mainloop()
 
